@@ -7,7 +7,6 @@
   "orientation": "landscape",
   "background_color": "#090813",
   "theme_color": "#090813",
-  "categories": ["entertainment", "games", "utilities"],
   "icons": [
     {
       "src": "shop-logo.png",
@@ -18,23 +17,6 @@
       "src": "shop-logo.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "فتح المسار 5.05-9.60",
-      "url": "./505_960/",
-      "description": "الوصول السريع لإصدارات 5.05-9.60"
-    },
-    {
-      "name": "فتح المسار 10.00-11.02",
-      "url": "./1000_1102/",
-      "description": "الوصول السريع لإصدارات 10.00-11.02"
-    },
-    {
-      "name": "فتح المسار 11.50-13.00",
-      "url": "./1150-1300/",
-      "description": "الوصول السريع لإصدارات 11.50-13.00"
     }
   ]
 }
