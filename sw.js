@@ -11,44 +11,63 @@ const urlsToCache = [
 ];
 
 // تثبيت الـ Service Worker وتخزين الملفات الأساسية
-self.addEventListener("install", (event) => {
+self.addEventListener("install", function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log("Opened cache");
+    caches.open(CACHE_NAME).then(function(cache) {
+      console.log("SW: Installing and caching files");
       return cache.addAll(urlsToCache);
+    }).catch(function(error) {
+      console.error("SW: Cache install failed", error);
     })
   );
 });
 
 // استراتيجية: الشبكة أولاً مع الرجوع إلى الكاش
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", function(event) {
+  // Only cache GET requests
+  if (event.request.method !== "GET") {
+    return;
+  }
+
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // إذا كانت الاستجابة صالحة، خزّن نسخة في الكاش
-        if (response.ok && event.request.method === "GET") {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
-        }
+    fetch(event.request).then(function(response) {
+      // Validate response
+      if (!response || response.status !== 200 || response.type === "error") {
         return response;
-      })
-      .catch(() => {
-        // عند فشل الشبكة، ابحث في الكاش
-        return caches.match(event.request);
-      })
+      }
+
+      // Clone the response before caching
+      var responseToCache = response.clone();
+      
+      caches.open(CACHE_NAME).then(function(cache) {
+        cache.put(event.request, responseToCache);
+      });
+
+      return response;
+    }).catch(function() {
+      // Network failed, try cache
+      return caches.match(event.request).then(function(response) {
+        if (response) {
+          return response;
+        }
+        // Return offline page if available
+        return caches.match("index.html");
+      });
+    })
   );
 });
 
 // تنظيف الكاشات القديمة عند تفعيل نسخة جديدة
-self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [CACHE_NAME];
+self.addEventListener("activate", function(event) {
+  console.log("SW: Activating");
+  var cacheWhitelist = [CACHE_NAME];
+  
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(function(cacheNames) {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log("SW: Deleting old cache", cacheName);
             return caches.delete(cacheName);
           }
         })
