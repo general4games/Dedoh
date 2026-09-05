@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" manifest="CSSFontFace.manifest">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> الجنرال للألعاب الإلكترونية - PS4 10.00 - 11.02</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; min-height: 100vh;
+    background-color: #000000; background-image: url('../image_3.png');
+    background-repeat: no-repeat; background-position: center center;
+    background-attachment: fixed; background-size: cover;
+    color: #e6ebf2; font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    display: flex; flex-direction: column;
+  }
+  #brand {
+    text-align: center; padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  #brand b {
+    font-size: 16px; font-weight: 700; letter-spacing: 0.08em; color: #ffffff;
+  }
+  #wrap { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
+  #console {
+    white-space: pre-wrap; font: 13px/1.5 Consolas, "Courier New", monospace;
+    background: rgba(10, 12, 16, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 14px 16px;
+    flex: 1; height: calc(100vh - 120px); overflow-y: auto; color: #d1d5db;
+  }
+</style>
+</head>
+<body>
+
+<div id="brand">
+  <b> الجنرال للألعاب الإلكترونية: 0918846443</b>
+</div>
+
+<div id="wrap">
+  <pre id="console">Caching offline files... 0%</pre>
+</div>
+
+<audio id="bg-music" loop autoplay preload="auto"><source src="../song.mp3" type="audio/mpeg"></audio>
+
+<script>
+  var scriptsLoaded = false;
+  function triggerScripts() {
+    if (scriptsLoaded) return;
+    scriptsLoaded = true;
+    var consoleLog = document.getElementById('console');
+    if (consoleLog) consoleLog.innerText += "\nLoading main.js & script.js...";
+
+    var s1 = document.createElement('script');
+    s1.src = 'src/main.js';
+    s1.onload = function() {
+      var s2 = document.createElement('script');
+      s2.src = 'includes/script.js';
+      document.body.appendChild(s2);
+    };
+    document.body.appendChild(s1);
+  }
+
+  if (window.applicationCache) {
+    var appCache = window.applicationCache;
+    var consoleLog = document.getElementById('console');
+
+    appCache.addEventListener('progress', function(e) {
+      if (e.lengthComputable && consoleLog) {
+        var percent = Math.round((e.loaded / e.total) * 100);
+        consoleLog.innerText = "Caching offline files... " + percent + "%";
+      }
+    }, false);
+
+    appCache.addEventListener('cached', function() { triggerScripts(); }, false);
+    appCache.addEventListener('noupdate', function() { triggerScripts(); }, false);
+    appCache.addEventListener('error', function() { triggerScripts(); }, false);
+    setTimeout(function() { if (!scriptsLoaded) triggerScripts(); }, 3000);
+  } else {
+    triggerScripts();
+  }
+</script>
+
+</body>
+</html>
