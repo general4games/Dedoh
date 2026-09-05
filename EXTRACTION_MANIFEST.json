@@ -1,6 +1,6 @@
 {
   "source_database": "ApplicationCache.db",
-  "cache_group": cache.appcache",
+  "cache_group": "cache.appcache",
   "resources_found": 20,
   "unique_local_files": 18,
   "files": [
@@ -33,7 +33,7 @@
       "cache_entry_type": 4
     },
     {
-          "local_path": "core.js",
+      "local_path": "core.js",
       "mime_type": "text/javascript",
       "status_code": 200,
       "size": 43266,
@@ -68,7 +68,7 @@
       "cache_entry_type": 4
     },
     {
-        "local_path": "patches/1150.bin",
+      "local_path": "patches/1150.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
       "size": 632,
