@@ -1,11 +1,10 @@
 {
   "source_database": "ApplicationCache.db",
-  
+  "cache_group":cache.appcache",
   "resources_found": 20,
   "unique_local_files": 18,
   "files": [
     {
-      
       "local_path": "index.html",
       "mime_type": "text/html",
       "status_code": 200,
@@ -13,7 +12,6 @@
       "cache_entry_type": 1
     },
     {
-      
       "local_path": "cache.appcache",
       "mime_type": "text/cache-manifest",
       "status_code": 200,
@@ -21,7 +19,6 @@
       "cache_entry_type": 2
     },
     {
-      
       "local_path": "chain_lapse.js",
       "mime_type": "text/javascript",
       "status_code": 200,
@@ -29,7 +26,6 @@
       "cache_entry_type": 4
     },
     {
-    
       "local_path": "chain_poops.js",
       "mime_type": "text/javascript",
       "status_code": 200,
@@ -37,15 +33,13 @@
       "cache_entry_type": 4
     },
     {
-      
-      "local_path": "core.js",
+          "local_path": "core.js",
       "mime_type": "text/javascript",
       "status_code": 200,
       "size": 43266,
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "int64.js",
       "mime_type": "text/javascript",
       "status_code": 200,
@@ -53,7 +47,6 @@
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "logo_raw.png",
       "mime_type": "image/png",
       "status_code": 200,
@@ -61,7 +54,6 @@
       "cache_entry_type": 4
     },
     {
-    
       "local_path": "mem.js",
       "mime_type": "text/javascript",
       "status_code": 200,
@@ -69,7 +61,6 @@
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "patches/1100.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
@@ -77,15 +68,13 @@
       "cache_entry_type": 4
     },
     {
-    
-      "local_path": "patches/1150.bin",
+        "local_path": "patches/1150.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
       "size": 632,
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "patches/1200.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
@@ -93,7 +82,6 @@
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "patches/1250.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
@@ -101,7 +89,6 @@
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "patches/1300.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
@@ -109,7 +96,6 @@
       "cache_entry_type": 4
     },
     {
-  
       "local_path": "payload.bin",
       "mime_type": "application/octet-stream",
       "status_code": 200,
@@ -117,7 +103,6 @@
       "cache_entry_type": 4
     },
     {
-      
       "local_path": "ps4_offsets.js",
       "mime_type": "text/javascript",
       "status_code": 200,
@@ -125,7 +110,6 @@
       "cache_entry_type": 4
     },
     {
-    
       "local_path": "rpc_worker.js",
       "mime_type": "text/javascript",
       "status_code": 200,
@@ -133,7 +117,6 @@
       "cache_entry_type": 4
     },
     {
-    
       "local_path": "run_lapse.html",
       "mime_type": "text/html",
       "status_code": 200,
@@ -141,7 +124,6 @@
       "cache_entry_type": 20
     },
     {
-  
       "local_path": "run_poops.html",
       "mime_type": "text/html",
       "status_code": 200,
